@@ -7,7 +7,7 @@
             <h4>{{ translate('Create Testimonial') }}</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('testimonial.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('testimonials.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <!-- Name -->

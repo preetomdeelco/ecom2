@@ -1160,37 +1160,37 @@
 
 
 
+@canany(['create_testimonial','show_testimonial'])
+<li class="aiz-side-nav-item">
+    <a href="#" class="aiz-side-nav-link">
+        <div class="aiz-side-nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-text" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4.414A1 1 0 0 0 3 14.414L1.293 12.707A1 1 0 0 0 1 12.414V2a1 1 0 0 1 1-1h12zM3 3h10v1H3V3zm0 2h10v1H3V5zm0 2h7v1H3V7z"/>
+            </svg>
+        </div>
+        <span class="aiz-side-nav-text">{{ translate('Testimonials') }}</span>
+        <span class="aiz-side-nav-arrow"></span>
+    </a>
+    <ul class="aiz-side-nav-list level-2">
+        @can('create_testimonial')
+        <li class="aiz-side-nav-item">
+           
+            <a href="{{ route('testimonials.create') }}" class="aiz-side-nav-link {{ areActiveRoutes(['testimonials.create']) }}">
+                <span class="aiz-side-nav-text">{{ translate('Create Testimonial') }}</span>
+            </a>
+        </li>
+        @endcan
+        @can('show_testimonial')
+        <li class="aiz-side-nav-item">
 
-                @canany(['create_testimonial','show_testimonial'])
-                <li class="aiz-side-nav-item">
-                    <a href="#" class="aiz-side-nav-link">
-                        <div class="aiz-side-nav-icon">
-                            <!-- Testimonial / Chat SVG Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-text" viewBox="0 0 16 16">
-                                <path d="M14 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4.414A1 1 0 0 0 3 14.414L1.293 12.707A1 1 0 0 0 1 12.414V2a1 1 0 0 1 1-1h12zM3 3h10v1H3V3zm0 2h10v1H3V5zm0 2h7v1H3V7z"/>
-                            </svg>
-                        </div>
-                        <span class="aiz-side-nav-text">{{ translate('Testimonials') }}</span>
-                        <span class="aiz-side-nav-arrow"></span>
-                    </a>
-                    <ul class="aiz-side-nav-list level-2">
-                        @can('create_testimonial')
-                        <li class="aiz-side-nav-item">
-                            <a href="{{ route('testimonial.create') }}" class="aiz-side-nav-link {{ areActiveRoutes(['testimonial.create']) }}">
-                                <span class="aiz-side-nav-text">{{ translate('Create Testimonial') }}</span>
-                            </a>
-                        </li>
-                        @endcan
-                        @can('show_testimonial')
-                        <li class="aiz-side-nav-item">
-                            <a href="{{ route('testimonial.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['testimonial.index']) }}">
-                                <span class="aiz-side-nav-text">{{ translate('All Testimonials') }}</span>
-                            </a>
-                        </li>
-                        @endcan
-                    </ul>
-                </li>
-                @endcanany
+            <a href="{{ route('testimonials.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['testimonials.index']) }}">
+                <span class="aiz-side-nav-text">{{ translate('All Testimonials') }}</span>
+            </a>
+        </li>
+        @endcan
+    </ul>
+</li>
+@endcanany
 
 
 

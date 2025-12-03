@@ -4,7 +4,7 @@
     <div class="card shadow-sm">
         <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
             <h4>{{ translate('All Testimonials') }}</h4>
-            <a href="{{ route('testimonial.create') }}" class="btn btn-light btn-sm">{{ translate('Add New') }}</a>
+            <a href="{{ route('testimonials.create') }}" class="btn btn-light btn-sm">{{ translate('Add New') }}</a>
         </div>
 
         <div class="card-body">
