@@ -298,7 +298,7 @@
 
                 {{-- Preorder --}}
                 @if (addon_is_activated('preorder'))
-                    @canany(['preorder_dashboard', 'add_preorder_product', 'view_all_preorder_products', 'view_all_preorders', 'view_all_inhouse_preorders', 
+                    @canany(['preorder_dashboard', 'add_preorder_product', 'view_all_preorder_products', 'view_all_preorders', 'view_all_inhouse_preorders',
                             'view_all_seller_preorders', 'view_all_delayed_prepayment_preorders', 'view_all_final_preorders', 'view_preorder_seller_commission_history',
                             'preorder_settings', 'view_all_preorder_product_conversations','view_all_preorder_product_queries', 'view_all_preorder_product_reviews',
                             'view_all_faqs', 'view_all_preorder_notification_types'])
@@ -439,7 +439,7 @@
                                     @if (get_setting('conversation_system') == 1)
                                         @php
                                             $preorderConversation = get_non_viewed_preorder_conversations();
-                                        @endphp   
+                                        @endphp
                                         <li class="aiz-side-nav-item">
                                             <a href="{{ route('preorder-conversations.admin_index') }}"
                                                 class="aiz-side-nav-link {{ areActiveRoutes(['preorder-conversations.admin_index','preorder-conversations.admin_show']) }}">
@@ -828,7 +828,7 @@
                                         </a>
                                     </li>
                                 @endcan
-                                
+
                                 @can('view_approved_refund_requests')
                                 <li class="aiz-side-nav-item">
                                     <a href="{{route('paid_refund')}}" class="aiz-side-nav-link">
@@ -1158,6 +1158,42 @@
                 </li>
                 @endcanany
 
+
+
+
+                @canany(['create_testimonial','show_testimonial'])
+                <li class="aiz-side-nav-item">
+                    <a href="#" class="aiz-side-nav-link">
+                        <div class="aiz-side-nav-icon">
+                            <!-- Testimonial / Chat SVG Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-text" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4.414A1 1 0 0 0 3 14.414L1.293 12.707A1 1 0 0 0 1 12.414V2a1 1 0 0 1 1-1h12zM3 3h10v1H3V3zm0 2h10v1H3V5zm0 2h7v1H3V7z"/>
+                            </svg>
+                        </div>
+                        <span class="aiz-side-nav-text">{{ translate('Testimonials') }}</span>
+                        <span class="aiz-side-nav-arrow"></span>
+                    </a>
+                    <ul class="aiz-side-nav-list level-2">
+                        @can('create_testimonial')
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('testimonial.create') }}" class="aiz-side-nav-link {{ areActiveRoutes(['testimonial.create']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('Create Testimonial') }}</span>
+                            </a>
+                        </li>
+                        @endcan
+                        @can('show_testimonial')
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('testimonial.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['testimonial.index']) }}">
+                                <span class="aiz-side-nav-text">{{ translate('All Testimonials') }}</span>
+                            </a>
+                        </li>
+                        @endcan
+                    </ul>
+                </li>
+                @endcanany
+
+
+
                 <!-- marketing -->
                 @canany(['view_all_flash_deals',
                 'view_all_dynamic_popups',
@@ -1256,7 +1292,7 @@
                             </ul>
                         </li>
                         @endcan
-                        
+
                         @can('send_newsletter')
                         <li class="aiz-side-nav-item">
                             <a href="{{route('newsletters.index')}}" class="aiz-side-nav-link">
@@ -1343,7 +1379,7 @@
                         </li>
                         @endcan
 
-                       
+
                     </ul>
                 </li>
                 @endcanany
@@ -1515,7 +1551,7 @@
                 @endcanany
                 @endif
 
-               
+
 
                 <!-- Club Point Addon-->
                 @if (addon_is_activated('club_point'))
@@ -1622,18 +1658,18 @@
                                 </a>
                             </li>
                         @endcan
-                       
+
                     </ul>
                 </li>
                 @endcanany
                 @endif
 
-                
+
 
                 @canany(['payment_methods_configurations','african_pg_configuration','african_pg_credentials_configuration','view_all_manual_payment_methods','view_all_offline_payment_orders',
                         'view_all_offline_wallet_recharges','view_all_offline_customer_package_payments','view_all_offline_seller_package_payments','asian_payment_gateway_configuration'])
                 <li class="aiz-side-nav-item">
-                    
+
                     <a href="javascript:void(0);" class="aiz-side-nav-link">
                         <div class="aiz-side-nav-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
@@ -1667,7 +1703,7 @@
                         </li>
                         @endcan
 
-                        
+
                         <!-- Cybersource Addon -->
                         @if (addon_is_activated('cybersource')  && auth()->user()->can('cybersource_pg_configuration'))
                         <li class="aiz-side-nav-item">
@@ -1685,10 +1721,10 @@
                         </li>
                         @endif
 
-                       
 
 
-                       
+
+
                         <!-- Paytm Addon -->
                         @if (addon_is_activated('paytm') && auth()->user()->can('asian_payment_gateway_configuration'))
                         <li class="aiz-side-nav-item">
@@ -1797,7 +1833,7 @@
                 </li>
                 @endcanany
 
-                
+
 
                 <!-- Website Setup -->
                 @canany(['header_setup', 'footer_setup', 'view_all_website_pages', 'website_appearance', 'authentication_layout_settings', 'top_banner_setting', 'view_top_banner'])
@@ -2028,7 +2064,7 @@
                                         <span class="aiz-side-nav-text">{{translate('Facebook Chat')}}</span>
                                     </a>
                                 </li>
-                                
+
                                 @endcan --}}
 
                                 @can('whatsapp_chat')
@@ -2279,7 +2315,7 @@
                             </a>
                         </li>
                         @endcan
-                       
+
                         @can('sitemap_generator')
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('sitemap_generator') }}" class="aiz-side-nav-link">

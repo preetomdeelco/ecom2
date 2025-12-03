@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Http\Controllers\Api\v2\CommentController;
-use App\Http\Middleware\EnsureSystemKey;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\EnsureSystemKey;
+use App\Http\Controllers\Api\v2\CommentController;
+use App\Http\Controllers\Api\V2\TestimonialController;
 
 
 
@@ -395,6 +396,18 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function () {
         Route::delete('blog/comment/{id}', 'destroy');
     });
         });
+
+    Route::middleware('auth:sanctum')->group(function(){
+        Route::controller(TestimonialController::class)->group(function(){
+        //    Route::get('/testimonial/create', 'create');
+        Route::post('/testimonial', 'store');
+        Route::get('/testimonial', 'index');
+        // Route::get('/testimonial/{id}', 'edit') ;
+        // Route::get('/testimonial/{id}', 'delete') ;
+
+        });
+
+    });
 
 
     // Route::controller(WholesaleProductController::class)->group(function () {

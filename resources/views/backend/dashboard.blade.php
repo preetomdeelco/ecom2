@@ -674,7 +674,7 @@
             @endif
         </div>
     @endcan
-    
+
 @endsection
 @section('script')
     <!-- dashboard script -->
