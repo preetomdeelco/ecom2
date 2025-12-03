@@ -9,7 +9,9 @@ use App\Http\Controllers\Api\V2\TestimonialController;
 
 
 
+
 Route::group(['prefix' => 'v2/auth', 'middleware' => ['app_language']], function () {
+
 
     Route::post('info', [AuthController::class, 'getUserInfoByAccessToken']);
     Route::controller(AuthController::class)->group(function () {
@@ -383,7 +385,7 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function () {
 
     Route::post('offline/payment/submit', 'App\Http\Controllers\Api\V2\OfflinePaymentController@submit')->name('api.offline.payment.submit');
 
-
+     Route::get('/testimonial',[TestimonialController::class,'index' ] );
     Route::controller(BlogController::class)->group(function () {
         Route::get('blog-list', 'blog_list');
         Route::get('blog-details/{slug}', 'blog_details');
@@ -397,17 +399,6 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function () {
     });
         });
 
-    Route::middleware('auth:sanctum')->group(function(){
-        Route::controller(TestimonialController::class)->group(function(){
-        //    Route::get('/testimonial/create', 'create');
-        Route::post('/testimonial', 'store');
-        Route::get('/testimonial', 'index');
-        // Route::get('/testimonial/{id}', 'edit') ;
-        // Route::get('/testimonial/{id}', 'delete') ;
-
-        });
-
-    });
 
 
     // Route::controller(WholesaleProductController::class)->group(function () {
